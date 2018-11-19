@@ -41,7 +41,7 @@ class PasswordResetsController < ApplicationController
 
   def password_reset_mailer(user)
     token = generate_token(user.id, user.email)
-    UserMailer.forgot_password(user.email, token).deliver
+    UserMailer.forgot_password(user.email, token).deliver_now
   end
 
   def generate_token(id, email)
