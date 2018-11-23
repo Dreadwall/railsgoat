@@ -31,8 +31,18 @@ Railsgoat::Application.configure do
 
   # ActionMailer settings for email support
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: "127.0.0.1", port: 1025 }
-  config.action_mailer.default_url_options = { host: "127.0.0.1:3000" }
+  # config.action_mailer.smtp_settings = { address: "127.0.0.1", port: 1025 }
+  # config.action_mailer.default_url_options = { host: "127.0.0.1:3000" }
+  config.action_mailer.smtp_settings = {
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :user_name            => ENV['gmail_username'],
+   :password             => ENV['gmail_password'],
+   :authentication       => "plain",
+   :enable_starttls_auto => true
+  }
+
+
 
  # config.middleware.insert_before(
  #      Rack::Lock, Rack::LiveReload,
